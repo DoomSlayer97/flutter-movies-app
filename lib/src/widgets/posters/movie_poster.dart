@@ -6,11 +6,13 @@ class MoviePoster extends StatelessWidget {
   MoviePoster({
     Key key,
     @required this.title,
-    @required this.imageUrl
+    @required this.imageUrl,
+    this.onTap
   }) : super(key: key);
 
   final String title;
   final String imageUrl;
+  final Function onTap;
 
   final _titleStyle = new TextStyle(
     fontSize: 15.5,
@@ -19,16 +21,19 @@ class MoviePoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(              
-        children: [
+    return GestureDetector(
+      onTap: () => this.onTap(),
+      child: Container(
+        child: Stack(              
+          children: [
 
-          _buildMoviePosterImage(),
-          _buildBoxDecoration(),
+            _buildMoviePosterImage(),
+            _buildBoxDecoration(),
 
-          _buildTitle(),
+            _buildTitle(),
 
-        ],
+          ],
+        ),
       ),
     );
   }

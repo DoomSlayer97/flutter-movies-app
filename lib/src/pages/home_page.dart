@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/src/blocs/provider.dart';
 import 'package:movieapp/src/models/movie_model.dart';
+import 'package:movieapp/src/pages/movie_detail.dart';
 import 'package:movieapp/src/widgets/page_template.dart';
 import 'package:movieapp/src/widgets/posters/movies_swiper.dart';
+import 'package:movieapp/src/helpers/push_transitions.dart' as pageTransitions;
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -24,6 +26,12 @@ class _HomePageState extends State<HomePage> {
   );
 
   HomeBloc _homeBloc;
+
+  void _goDetailMovie( MovieModel movieModel ) {
+
+    Navigator.push(context, pageTransitions.createRoute( MovieDetailPage( movieModel: movieModel ) ));
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +91,8 @@ class _HomePageState extends State<HomePage> {
         );
 
         return MoviesSwiper(
-          movies: movies
+          movies: movies,
+          onTap: ( movie ) => this._goDetailMovie( movie ),
         );  
       },
     );

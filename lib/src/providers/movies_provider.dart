@@ -7,7 +7,7 @@ class MoviesProvider extends ProviderHttp {
 
   Future<List<MovieModel>> getPopularMovies() async {
 
-    final uri = this.getUriUrl( '/now_playing', params: {
+    final uri = this.getUriUrl( '/movie/now_playing', params: {
       'language': 'en-US',
       'page': 1.toString()
     });

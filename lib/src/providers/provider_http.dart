@@ -2,7 +2,7 @@
 class ProviderHttp {
 
   final String _domain = "api.themoviedb.org";
-  final String _path = "3/movie";
+  final String _path = "3";
   String _baseUrl; 
 
   ProviderHttp() {

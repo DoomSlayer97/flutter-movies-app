@@ -7,10 +7,12 @@ class MoviesSwiper extends StatelessWidget {
 
   const MoviesSwiper({
     Key key,
-    @required this.movies
+    @required this.movies,
+    this.onTap
   }) : super(key: key);
 
   final List<MovieModel> movies;
+  final Function(MovieModel) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class MoviesSwiper extends StatelessWidget {
           return MoviePoster(
             title: movies[i].title,
             imageUrl: movies[i].obtenerPoster(),
+            onTap: () => this.onTap( movies[i] ),
           );
         },
       ),
