@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movieapp/src/models/movie_model.dart';
+import 'package:movieapp/src/theme/theme.dart' as colors;
 
 class MovieDetailPage extends StatefulWidget {
 
@@ -37,6 +38,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     this._padding = MediaQuery.of(context).padding;
 
     return Scaffold(
+      backgroundColor: colors.backgroundColor,
       body: Container(
         child: SingleChildScrollView(
           child: Column(
@@ -46,32 +48,35 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
 
               SizedBox( height: 20.5 ),
 
-              Padding(
-                padding: const EdgeInsets.symmetric( horizontal: 15.0 ),
-                child: Column(
-                  children: [
-
-                    Row(
-                      children: [
-                        Text( 'Overview', style: this._title, textAlign: TextAlign.start ),
-                      ],
-                    ),
-
-                    SizedBox( height: 10.5 ),
-
-                    Text( this.widget.movieModel.overview ),
-
-
-                    
-                  ],
-                ),
-              )
-
+              _buildDetailContent()
 
             ]
           )
         ),
       )
+    );
+  }
+
+  Widget _buildDetailContent() {
+    return Padding(
+      padding: const EdgeInsets.symmetric( horizontal: 15.0 ),
+      child: Column(
+        children: [
+
+          Row(
+            children: [
+              Text( 'Overview', style: this._title, textAlign: TextAlign.start ),
+            ],
+          ),
+
+          SizedBox( height: 10.5 ),
+
+          Text( this.widget.movieModel.overview ),
+
+
+          
+        ],
+      ),
     );
   }
 

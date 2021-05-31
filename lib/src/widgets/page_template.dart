@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movieapp/src/theme/theme.dart' as colors;
 
 class PageTemplate extends StatelessWidget {
 
@@ -15,6 +16,7 @@ class PageTemplate extends StatelessWidget {
     final padding = MediaQuery.of(context).padding;
 
     return Scaffold(
+      backgroundColor: colors.backgroundColor,
       body: Container(
         padding: EdgeInsets.only(
           top: padding.top + 15.0,

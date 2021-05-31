@@ -27,4 +27,28 @@ class MoviesProvider extends ProviderHttp {
 
   }
 
+  Future<List<MovieModel>> getMoviesSearch( String query ) async {
+
+    final uri = this.getUriUrl( '/search/movie', params: {
+      'language': 'en-US',
+      'query': query
+    });
+
+    print( uri.toString() );
+
+    final resp = await http.get( uri );
+
+    if ( resp.statusCode != 200 ) return null;
+    
+    final jsonData = json.decode( resp.body );
+
+    final List moviesJson = jsonData['results'];
+    final List<MovieModel> movies = <MovieModel> [];
+
+    moviesJson.forEach(( item ) { movies.add( MovieModel.fromJson( item ) ); });
+
+    return movies;
+
+  }  
+
 }

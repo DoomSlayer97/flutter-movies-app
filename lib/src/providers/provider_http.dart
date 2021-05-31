@@ -17,7 +17,7 @@ class ProviderHttp {
 
     final String finalUrl = "$_path$prefix";
 
-    params = {};
+    if ( params == null ) params = {};
 
     params['api_key'] = '5b5f0fb6035bfba42ba625bc45be2acd';    
 

@@ -11,7 +11,18 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Material App',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark(),
+        theme: ThemeData(
+          backgroundColor: const Color(0xfb41436a),
+          // Define the default brightness and colors.
+          brightness: Brightness.dark,
+          primaryColor: Colors.lightBlue[800],
+          accentColor: Colors.cyan[600],
+
+          appBarTheme: AppBarTheme(
+            backgroundColor: const Color(0xfb41436a)
+          )
+
+        ),
         home: HomePage()
       ),
     );

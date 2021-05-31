@@ -5,6 +5,7 @@ import 'package:movieapp/src/pages/movie_detail.dart';
 import 'package:movieapp/src/widgets/page_template.dart';
 import 'package:movieapp/src/widgets/posters/movies_swiper.dart';
 import 'package:movieapp/src/helpers/push_transitions.dart' as pageTransitions;
+import 'package:movieapp/src/widgets/search/search_delegate.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -30,6 +31,12 @@ class _HomePageState extends State<HomePage> {
   void _goDetailMovie( MovieModel movieModel ) {
 
     Navigator.push(context, pageTransitions.createRoute( MovieDetailPage( movieModel: movieModel ) ));
+
+  }
+
+  void _goSearchMovie() {
+
+    showSearch(context: context, delegate: DataSearch());
 
   }
 
@@ -123,7 +130,7 @@ class _HomePageState extends State<HomePage> {
           icon: Icon( Icons.search, size: 25.5, ),
           tooltip: "Search",
 
-          onPressed: () {}
+          onPressed: () => _goSearchMovie()
         )
         
       ],
